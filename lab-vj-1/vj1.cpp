@@ -1,10 +1,21 @@
-#include <stdio.h>
+#include <iostream>
 
-void printaj() { printf("Hello World"); }
+using namespace std;
 
-int main() {
-  printaj();
-  return 0;
+void reverse(char *s, int l, int r) {
+  if (l >= r)
+    return;
+
+  char tmp = s[l];
+  s[l] = s[r];
+  s[r] = tmp;
+
+  reverse(s, l + 1, r - 1);
 }
 
-void ispis(float polje[], int n) { printf("Hello World"); }
+int main() {
+  char a[] = "abcdef";
+  reverse(a, 1, 4);
+  cout << a << endl;
+  return 0;
+}

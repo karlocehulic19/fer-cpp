@@ -1,26 +1,31 @@
 #include <iostream>
-#include <string.h>
 
 using namespace std;
 
+namespace s1 {
+const int a = 1;
+}
+
+namespace s2 {
+const int a = 2;
+}
+
+using namespace s1;
+using namespace s2;
+
 class Point {
 public:
-  int x;
-  int y;
+  double x, y;
+  Point() : x(0), y(0) {}
+  Point(double xin, double yin) {
+    x = xin;
+    y = yin;
+  }
+
+  void print() { cout << "(" << x << "," << y << ")" << endl; }
 };
 
 int main(void) {
-  Point p, r, s;
-  cout << p.x << " " << p.y << endl;
-  p.x = 10;
-  p.y = 20;
-  r = p;
-  p.x = 120;
-  cout << p.x << " " << p.y << endl;
-  cout << r.x << " " << r.y << endl;
-  memcpy(&s, &p, sizeof(p));
-  p.x = 74;
-  cout << s.x << " " << s.y << endl;
-  cout << p.x << " " << p.y << endl;
-  return 0;
+  int arr[] = {1, 2, 3};
+  cout << a;
 }
