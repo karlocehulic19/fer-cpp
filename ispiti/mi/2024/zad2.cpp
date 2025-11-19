@@ -13,12 +13,17 @@ private:
   ListElement<T> *head;
 
 public:
+  MyList() { this->head = nullptr; };
+
   void AddUnique(T val) {
     if (this->Contains(val)) {
       return;
     }
 
-    ListElement<T> *curr = head;
+    ListElement<T> *dummy = new ListElement<T>();
+    dummy->next = head;
+
+    ListElement<T> *curr = dummy;
 
     while (curr->next != nullptr) {
       curr = curr->next;
@@ -27,10 +32,15 @@ public:
     ListElement<T> *newUnique = new ListElement<T>;
     newUnique->i = val;
     curr->next = newUnique;
+
+    head = dummy->next;
   }
 
   void Remove(T val) {
-    ListElement<T> *curr = head;
+    ListElement<T> *dummy = new ListElement<T>();
+    dummy->next = head;
+
+    ListElement<T> *curr = dummy;
 
     while (curr->next != nullptr) {
       ListElement<T> *nextPtr = curr->next;
@@ -42,11 +52,12 @@ public:
 
       curr = nextPtr;
     }
+
+    head = dummy->next; // in case head is delted
   }
 
   bool Contains(T val) {
-    ListElement<T> *curr =
-        head->next; // is heads next to avoid contains for default head value
+    ListElement<T> *curr = head;
 
     while (curr != nullptr) {
       if (curr->i == val) {
