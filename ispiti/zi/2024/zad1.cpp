@@ -20,7 +20,7 @@ protected:
   struct Cvor {
     T elem;
     shared_ptr<Cvor> lijevo, desno;
-    Cvor(const T &novi) : elem(novi), lijevo(nullptr), desno(nullptr) {};
+    Cvor(const T &novi) : elem(novi) {};
   };
   shared_ptr<Cvor> korijen;
   bool find(shared_ptr<Cvor> node, const T &a, shared_ptr<Cvor> &elem) {
